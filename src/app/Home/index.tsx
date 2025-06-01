@@ -6,6 +6,7 @@ export function Home() {
   return (
     <View style={styles.container}>
       <Header />
+      <Text>Hello World</Text>
     </View>
   );
 }
