@@ -6,7 +6,7 @@ import { styles } from "./styles";
 
 type RootStackParamList = {
   Hello: undefined;
-  Home: undefined;
+  Login: undefined;
 };
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Hello">;
@@ -16,7 +16,7 @@ export function Hello() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace("Home");
+      navigation.replace("Login");
     }, 3000);
 
     return () => clearTimeout(timer);
