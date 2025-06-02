@@ -1,12 +1,13 @@
-import { View, Text, Image } from "react-native";
+import { View, SafeAreaView, Text, Image } from "react-native";
 import { styles } from "./styles";
 import { Header } from "@/components/Header";
+import { Input } from "@/components/Input";
 
 export function Home() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header />
-      <Text>Hello World</Text>
-    </View>
+      <Input />
+    </SafeAreaView>
   );
 }
