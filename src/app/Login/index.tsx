@@ -4,7 +4,7 @@ import {style} from "./style"
 import Logo from '@/assets/peri_logo.png';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export function Login() {
+export function Login({ navigation }: any) {
   return (
     <View style={style.container}>
       <View style={style.boxTop}>
@@ -22,8 +22,9 @@ export function Login() {
         <MaterialIcons name="lock" size={24} color="#999" />
         <TextInput style={{flex: 1}} placeholder='Senha'/>
       </View>
+
       <View style={style.boxButton}> 
-        <TouchableOpacity style = {style.button}>
+        <TouchableOpacity style = {style.button} onPress={() => navigation.navigate('Home')}>
           <Text style={style.textButton} > Entrar </Text>
         </TouchableOpacity>
       </View>
