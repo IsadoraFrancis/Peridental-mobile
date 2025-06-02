@@ -1,8 +1,25 @@
 import { StyleSheet } from "react-native";
+import { themas } from "@/global/themes";
 
 export const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 50,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginTop: 10,
+  },
+  search: {
+    width: "100%",
+    maxWidth: 350,
+    padding: 10,
+    flexDirection: "row",
+    borderWidth: 1,
+    borderColor: themas.colors.bgText,
+    borderRadius: 8,
+  },
+  input: {
+    flex: 1,
+    marginHorizontal: 8,
   },
 });
