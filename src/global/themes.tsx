@@ -1,4 +1,4 @@
-export const themas ={
+export const themes ={
     colors:{
         bgScreen:"#FFFFFF",
         primary:'#296D9D',
