@@ -19,15 +19,12 @@ export function Login({ navigation }: any) {
       </View>
 
       <View style={style.password}>
-        <MaterialIcons name="lock" size={24} color="#999" />
+        <MaterialIcons name="lock" size={24} color="#999"/>
         <TextInput style={{flex: 1}} placeholder='Senha'/>
       </View>
-
-      <View style={style.boxButton}> 
         <TouchableOpacity style = {style.button} onPress={() => navigation.navigate('Home')}>
           <Text style={style.textButton} > Entrar </Text>
         </TouchableOpacity>
-      </View>
     </View>
   );
 }

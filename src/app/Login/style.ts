@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
-import { themas } from "../../global/themes";
+import { themes } from "../../global/themes";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
 
@@ -8,14 +8,11 @@ export const style = StyleSheet.create ({
     container:{
         flex:1,
         alignItems:'center',
-        justifyContent:'center',
-        margin: 10,
+        margin: 25,
     },
     boxTop:{
-        height: Dimensions.get('window').height/3,
-        width:'100%',
         alignItems:'center',
-        justifyContent:'center',
+        marginTop: 150
     },
 
     logo:{
@@ -24,43 +21,41 @@ export const style = StyleSheet.create ({
     },
     titulo:{
         fontWeight:'bold',
-        marginTop: 40,
+        marginTop: 25,
         fontSize: 20,
-        color: themas.colors.secondary
+        color: themes.colors.secondary
     },
 
     user:{
         flexDirection: 'row',
+        alignItems: 'center',
         borderWidth: 2,
-        borderColor: themas.colors.bgText,
+        borderColor: themes.colors.bgText,
         borderRadius: 8,
+        marginBottom: 25,
+        marginTop: 25
     },
     password:{
+        alignItems: 'center',
         flexDirection: 'row',
         borderWidth: 2,
-        borderColor: themas.colors.bgText,
+        borderColor: themes.colors.bgText,
         borderRadius: 8,
-    },
-    
-    boxButton:{
-        height: Dimensions.get('window').height/3,
-        width:'100%',
-        alignItems:'center',
-        justifyContent:'center',
+        marginBottom: 25
     },
 
     button:{
-        width: 200,
+        width: 330,
         height: 50,
         alignItems:'center',
         justifyContent:'center',
-        backgroundColor: themas.colors.details,
+        backgroundColor: themes.colors.details,
         borderRadius: 8,
     },
 
     textButton:{
         fontSize: 20,
-        color:themas.colors.bgScreen,
+        color:themes.colors.bgScreen,
         fontWeight:'bold',
     }
 })
