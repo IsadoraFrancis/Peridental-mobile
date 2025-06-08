@@ -21,8 +21,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    width: 30,
-    height: 30,
+    width: 60,
+    height: 60,
     resizeMode: "contain",
     marginRight: 8,
   },
