@@ -4,7 +4,6 @@ import { themes } from "@/global/themes";
 export const styles = StyleSheet.create({
   container: {
     width: "100%",
-    flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
     marginTop: 10,
@@ -16,7 +15,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     borderWidth: 1,
     borderColor: themes.colors.bgText,
-    borderRadius: 8,
+    borderRadius: 15,
   },
   input: {
     flex: 1,
