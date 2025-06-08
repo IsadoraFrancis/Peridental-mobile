@@ -22,7 +22,7 @@ export function Login({ navigation }: any) {
         <MaterialIcons name="lock" size={24} color="#999"/>
         <TextInput style={{flex: 1}} placeholder='Senha'/>
       </View>
-        <TouchableOpacity style = {style.button} onPress={() => navigation.navigate('AddCase')}>
+        <TouchableOpacity style = {style.button} onPress={() => navigation.navigate('AddEvidence')}>
           <Text style={style.textButton} > Entrar </Text>
         </TouchableOpacity>
     </View>

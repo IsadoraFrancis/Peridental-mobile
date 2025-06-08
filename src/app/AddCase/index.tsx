@@ -70,7 +70,6 @@ export function AddCase() {
     const evidenceOptions = [
         { label: "Texto" },
         { label: "Imagem" },
-        { label: "Radiografia" },
     ];
 
     const reportTypeOptions = [ 
