@@ -1,15 +1,276 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    backgroundColor: "#fff",
-  },
-  text: {
-    fontSize: 32,
-    fontWeight: 400,
-    color: "white",
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+    },
+    contentContainer: { 
+        flexGrow: 1, 
+        justifyContent: "flex-start",
+        alignItems: "center",
+        paddingBottom: 50,
+    },
+
+    titulo: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#002132',
+        marginBottom: 20,
+        alignSelf: 'center',
+        paddingHorizontal: 16,
+        marginTop: 20,
+    },
+
+    buttonRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 8,
+        width: '100%',
+        paddingHorizontal: 16, 
+        marginBottom: 20, 
+    },
+
+    dropButton: {
+        flexDirection: 'row',
+        backgroundColor: '#001F30',
+        borderRadius: 8,
+        padding: 10,
+        marginBottom: 10,
+        width: 100, 
+        alignItems: 'center',
+        justifyContent: 'space-between', 
+    },
+
+    buttonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        flexShrink: 1, 
+        fontSize: 13
+    },
+
+    dropdownList: {
+        position: 'absolute', 
+        width: 100, 
+        backgroundColor: "#00223A",
+        borderRadius: 8,
+        elevation: 3,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        top: 45,
+        left: 0,
+        zIndex: 100, 
+    },
+
+    dropdownItem: {
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: "#ccc",
+    },
+    dropdownText: {
+        color: '#fff',
+        fontSize: 10,
+    },
+
+    fixedButton: {
+        width: 100,
+    },
+    caseTitulo: {
+        fontSize: 13,
+        fontWeight: 'bold',
+        color: '#002132',
+        marginBottom: 8,
+        alignSelf: 'flex-start', 
+        paddingHorizontal: 16,
+    },
+
+    caseTituloR: {
+        fontSize: 13,
+        fontWeight: 'bold',
+        color: '#002132',
+        marginBottom: 8,
+        alignSelf: 'flex-start', 
+        paddingHorizontal: 16,
+    },
+    inputGrande: {
+        backgroundColor: '#337399',
+        borderRadius: 8,
+        padding: 10,
+        color: '#fff',
+        marginBottom: 15,
+        height: 100,
+        width: '92%',
+    },
+    inputPequeno: {
+        backgroundColor: '#337399',
+        borderRadius: 8,
+        padding: 10,
+        color: '#fff',
+        marginBottom: 15,
+        height: 50,
+        width: '92%',
+    },
+    evidenceSection: {
+        marginBottom: 20,
+        width: '100%', 
+        paddingHorizontal: 16,
+    },
+    evidenceTitle: {
+        fontSize: 13,
+        fontWeight: 'bold',
+        marginBottom: 8,
+        color: '#333',
+    },
+    evidenceSelectionButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 12,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 5,
+        backgroundColor: '#00223A',
+    },
+    evidenceSelectionText: {
+        color: '#fff',
+    },
+    evidenceDropdownList: {
+        maxHeight: 100,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 5,
+        marginTop: 5,
+        backgroundColor: '#00223A',
+    },
+    evidenceDropdownItem: {
+        padding: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+    },
+    evidenceDropdownText: {
+        color: '#fff',
+    },
+    evidenceButtonRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    evidenceUploadButton: {
+        padding: 12,
+        backgroundColor: '#00223A',
+        borderRadius: 5,
+        alignItems: 'center',
+    },
+    evidenceUploadText: {
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+    evidenceImageContainer: {
+        marginTop: 10,
+        alignItems: 'center',
+    },
+    evidenceImage: {
+        width: 200,
+        height: 200,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#ddd',
+    },
+    evidenceImageName: {
+        marginTop: 5,
+        color: '#555',
+        fontSize: 12,
+    },
+    evidenceLocationInput: {
+        padding: 12,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 5,
+        backgroundColor: '#296D9D',
+        color: '#fff',
+    },
+    evidenceDescriptionInput: {
+        padding: 12,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 5,
+        backgroundColor: '#296D9D',
+        color: '#fff',
+        height: 120,
+        textAlignVertical: 'top',
+    },
+    saveEvidenceButton: {
+        backgroundColor: '#AB0535',
+        borderRadius: 8,
+        padding: 12,
+        alignItems: 'center',
+        marginTop: 10,
+        width: '92%',
+        marginBottom: 20,
+    },
+    saveButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 13,
+    },
+    evidenceListTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#002132',
+        marginBottom: 10,
+        alignSelf: 'flex-start',
+        paddingHorizontal: 16,
+        marginTop: 20,
+    },
+    evidenceCard: {
+        backgroundColor: '#F0F0F0',
+        borderRadius: 8,
+        padding: 15,
+        marginBottom: 15,
+        width: '92%',
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 2,
+    },
+    evidenceCardHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    evidenceCardTypeText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#002132',
+        flex: 1, 
+    },
+    evidenceCardImageNameText: {
+        fontSize: 12,
+        color: '#555',
+        marginRight: 10,
+    },
+    evidenceCardActions: {
+        flexDirection: 'row',
+    },
+    evidenceCardLocationText: {
+        fontSize: 12,
+        color: '#333',
+        marginBottom: 5,
+    },
+    evidenceCardDescriptionText: {
+        fontSize: 12,
+        color: '#333',
+    },
+    mainSaveButton: {
+        backgroundColor: '#AB0535', 
+        borderRadius: 8,
+        padding: 15,
+        alignItems: 'center',
+        marginTop: 20, 
+        width: '92%',
+    }
 });
