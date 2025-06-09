@@ -121,18 +121,8 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 -----
 
-## 📸 Screenshots (Em breve)
+## 📸 Screenshots
 
-*(Sugestão: Adicione aqui algumas capturas de tela do seu aplicativo mostrando as principais funcionalidades. Você pode usar ferramentas como CleanShot X (macOS) ou Lightshot para capturas rápidas e bonitas.)*
-
------
-
-## 🤝 Contribuição
-
-Contribuições são muito bem-vindas\! Se você tiver sugestões, melhorias ou quiser reportar um bug, sinta-se à vontade para:
-
-1.  Abrir uma **Issue** descrevendo sua ideia ou o problema encontrado.
-2.  Criar um **Pull Request** com suas modificações.
 
 -----
 
