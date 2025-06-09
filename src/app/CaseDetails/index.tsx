@@ -2,12 +2,12 @@
 import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Alert, SafeAreaView } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
-import { Header } from '@/components/Header'; // Assumindo que você usa o mesmo Header
-import { styles } from './styles'; // Importa o novo arquivo de estilos
+import { Header } from '@/components/Header'; 
+import { styles } from './styles'; 
 import { Input } from "@/components/Input";
+import { CaseCard } from "@/components/CaseCard";
 
-// Interface para o objeto de caso (adapte conforme o seu AddCase ou backend)
+
 interface CaseData {
     caseNumber: string;
     caseTitle: string;
@@ -16,21 +16,13 @@ interface CaseData {
     openingTime: string;
     responsibleExpert: string;
     caseType: string;
-    generalInfo: string; // Descrição geral do caso
-    occurrenceLocation: string; // Local da ocorrência
-    // Você pode adicionar mais campos aqui se necessário, como lista de evidências
-    // evidences?: Evidence[]; // Se quiser passar as evidências do caso
+    generalInfo: string; 
+    occurrenceLocation: string; 
 }
 
-export function CaseDetails() {
-    const navigation = useNavigation();
+export function CaseDetails({ navigation }: any) {
     const route = useRoute();
-
-    // Use o hook useRoute para acessar os parâmetros passados
-    // O 'caseData' será do tipo CaseData ou undefined se não for passado
     const { caseData } = route.params as { caseData: CaseData };
-
-    // Caso não haja dados (o que não deveria acontecer se a navegação for correta)
     if (!caseData) {
         return (
             <SafeAreaView style={styles.container}>
@@ -47,16 +39,16 @@ export function CaseDetails() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Header /> {/* Seu componente de cabeçalho */}
+            <Header /> 
             <ScrollView contentContainerStyle={styles.scrollContent}>
                 {/* Título do Caso Pericial */}
                 <View style={styles.titleSection}>
-                    <Text style={styles.baseTitleText}> {/* UM NOVO ESTILO BASE OU NEUTRO SE NECESSÁRIO */}
+                    <Text style={styles.baseTitleText}>
                         <Text style={styles.highlightText}>
                             Caso Pericial Nº - {caseData.caseNumber}
                         </Text>
-                        {' '} {/* Adicione um espaço aqui, se quiser */}
-                        <Text style={styles.caseTitleColor}> {/* Dê um nome mais claro para a cor do caseTitle */}
+                        {' '} 
+                        <Text style={styles.caseTitleColor}>
                             {caseData.caseTitle}
                         </Text>
                     </Text>
@@ -86,10 +78,8 @@ export function CaseDetails() {
                     </View>
                 </View>
 
-                {/* Linha Divisória */}
                 <View style={styles.divider} />
 
-                {/* Informações Gerais de Caso */}
                 <View style={styles.generalInfoSection}>
                     <Text style={styles.sectionTitle}>Informações Gerais de Caso</Text>
                     <Text style={styles.generalInfoText}>
@@ -100,12 +90,55 @@ export function CaseDetails() {
                         <Text style={styles.detailValue}>{caseData.occurrenceLocation}</Text>
                     </View>
                 </View>
+
                 <View style={styles.divider} />
                 
                 <View style={styles.generalEvidenceSection}>
-                    <Text style={styles.sectionTitle}>Informações Gerais de Caso</Text>
+                    <Text style={styles.sectionTitle}>Vitímas do Caso</Text>
                     <Input />
+                    <CaseCard navigation={navigation} />
+                    <View style={styles.bottomButtonsContainer}>
+                        <TouchableOpacity style={styles.bottomButton}>
+                            <Text style={styles.bottomButtonText}>ADICIONAR VITÍMA</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
+
+                <View style={styles.divider} />
+                
+                <View style={styles.generalEvidenceSection}>
+                    <Text style={styles.sectionTitle}>Evidências do Caso</Text>
+                    <Input />
+                    <CaseCard navigation={navigation} />
+                    <View style={styles.bottomButtonsContainer}>
+                        <TouchableOpacity style={styles.bottomButton} onPress={() => navigation.navigate('AddEvidence')}>
+                            <Text style={styles.bottomButtonText}>ADICIONAR EVIDÊNCIA</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                <View style={styles.divider} />
+
+                <View style={styles.generalEvidenceSection}>
+                    <Text style={styles.sectionTitle}>Laudos e Documentações do Caso</Text>
+                    <Input />
+                    <CaseCard navigation={navigation} />
+                    <View style={styles.bottomButtonsContainer}>
+                        <TouchableOpacity style={styles.bottomButton}>
+                            <Text style={styles.bottomButtonText}>ADICIONAR LAUDOS</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                 <View style={styles.ButtonsContainerBotton}>
+                    <TouchableOpacity style={styles.ButtonBotton}>
+                        <Text style={styles.ButtonTextBotton}>EDITAR CASO</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.bottomButton}>
+                        <Text style={styles.ButtonTextBotton}>EXCLUIR CASO</Text>
+                    </TouchableOpacity>
+                </View>
+
 
             </ScrollView>
         </SafeAreaView>

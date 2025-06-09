@@ -3,10 +3,11 @@ import { themes } from "@/global/themes";
 
 export const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: "90%",
     alignItems: "center",
     justifyContent: "flex-start",
     marginTop: 10,
+    marginBottom: 20,
   },
   search: {
     width: "100%",
@@ -21,5 +22,6 @@ export const styles = StyleSheet.create({
   input: {
     flex: 1,
     marginHorizontal: 8,
+    color: "#333",
   },
 });

@@ -4,36 +4,34 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F8F8F8', // Um cinza claro para o fundo
+        backgroundColor: '#F8F8F8', 
     },
     scrollContent: {
         flexGrow: 1,
         padding: 20,
-        paddingBottom: 40, // Adiciona espaço no final para o scroll
-        alignItems: 'center', // Centraliza o conteúdo horizontalmente
+        paddingBottom: 40,
+        alignItems: 'center', 
     },
     titleSection: {
         width: '100%',
         alignItems: 'center',
         marginBottom: 20,
     },
-    // Este será a cor para 'Caso Pericial Nº - {caseData.caseNumber}'
     highlightText: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#B30E2F', // Vermelho escuro
-        textAlign: 'center', // Pode ser removido se o pai já centraliza
+        color: '#B30E2F', 
+        textAlign: 'center', 
         lineHeight: 28,
     },
-    // Este será a cor para '{caseData.caseTitle}'
-    caseTitleColor: { // Renomeado de caseTitle para ser mais específico
+
+    caseTitleColor: { 
         fontSize: 22,
         fontWeight: 'bold',
-        color: '#00223A', // Azul escuro
-        textAlign: 'center', // Pode ser removido se o pai já centraliza
+        color: '#00223A',
+        textAlign: 'center', 
         lineHeight: 28,
     },
-    // Se você tiver um estilo base para o Text container que só define fonte/tamanho/etc.
     baseTitleText: {
         fontSize: 22,
         fontWeight: 'bold',
@@ -41,16 +39,15 @@ export const styles = StyleSheet.create({
         lineHeight: 28,
     },
     divider: {
-        width: '90%',
+        width: '100%',
         borderBottomColor: '#CCCCCC',
         borderBottomWidth: 1,
-        marginVertical: 20,
+        marginVertical: 0,
     },
     detailsSection: {
-        width: '90%',
+        width: '100%',
         padding: 15,
         marginBottom: 20,
-        marginRight: 60
     },
     detailRow: {
         flexDirection: 'row',
@@ -60,16 +57,16 @@ export const styles = StyleSheet.create({
     detailLabel: {
         fontSize: 15,
         fontWeight: 'bold',
-        color: '#00223A', // Azul escuro
+        color: '#00223A', 
     },
     detailValue: {
         fontSize: 15,
         color: '#333333',
-        flexShrink: 1, // Permite que o texto quebre linha se for muito longo
-        textAlign: 'right', // Alinha o valor à direita
+        flexShrink: 1, 
+        textAlign: 'right', 
     },
     generalInfoSection: {
-        width: '90%',
+        width: '100%',
         padding: 15,
         marginBottom: 20,
     },
@@ -77,8 +74,9 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: '#00223A',
-        marginBottom: 10,
+        marginBottom: 20,
         textAlign: 'center',
+        marginTop: 30,
     },
     generalInfoText: {
         fontSize: 15,
@@ -86,29 +84,12 @@ export const styles = StyleSheet.create({
         lineHeight: 22,
         marginBottom: 15,
     },
-    actionButtonsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: '90%',
-        marginTop: 20,
-    },
-    actionButton: {
-        backgroundColor: '#005792', // Azul médio para os botões de ação
-        paddingVertical: 12,
-        paddingHorizontal: 15,
-        borderRadius: 8,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-        marginHorizontal: 5,
-    },
-    actionButtonText: {
-        color: '#FFFFFF',
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginLeft: 8,
-    },
+   generalEvidenceSection:{
+    fontSize: 15,
+        color: '#444444',
+        lineHeight: 22,
+        marginBottom: 15,
+   },
     // Estilos para o caso de erro (se o caseData não for passado)
     errorContainer: {
         flex: 1,
@@ -132,4 +113,50 @@ export const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 16,
     },
+
+    bottomButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "90%",
+    marginTop: 10,
+    marginBottom: 30,
+  },
+  bottomButton: {
+    backgroundColor: "#00223A",
+    borderRadius: 8,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "45%",
+    marginLeft: 40
+  },
+  bottomButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 13,
+    textAlign: "center",
+  },
+
+  ButtonsContainerBotton: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "90%",
+    marginBottom: 30,
+  },
+  ButtonBotton: {
+    backgroundColor: "#00223A",
+    borderRadius: 8,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "45%", 
+  },
+  ButtonTextBotton: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 13,
+    textAlign: "center",
+  },
 });

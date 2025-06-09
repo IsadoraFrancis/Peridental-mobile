@@ -8,6 +8,15 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+type RootStackParamList = {
+  Home: undefined;
+  Access: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 interface MenuModalProps {
   isVisible: boolean;
@@ -15,6 +24,8 @@ interface MenuModalProps {
 }
 
 export function MenuModal({ isVisible, onClose }: MenuModalProps) {
+  const navigation = useNavigation<NavigationProp>();
+
   return (
     <Modal
       transparent={true}
@@ -43,7 +54,7 @@ export function MenuModal({ isVisible, onClose }: MenuModalProps) {
             <TouchableOpacity
               style={styles.menuItem}
               onPress={() => {
-                console.log("Visão Geral");
+                navigation.navigate("Home");
                 onClose();
               }}
             >
@@ -75,7 +86,10 @@ export function MenuModal({ isVisible, onClose }: MenuModalProps) {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.menuItem}
-              onPress={() => console.log("Gestão de Acesso")}
+              onPress={() => {
+                navigation.navigate("Access");
+                onClose();
+              }}
             >
               <Text style={styles.menuItemText}>Gestão de Acesso</Text>
             </TouchableOpacity>
