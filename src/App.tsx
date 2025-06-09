@@ -5,6 +5,7 @@ import { Login } from "./app/Login";
 import { Home } from "./app/Home";
 import { AddCase } from "./app/AddCase";
 import { AddEvidence } from "./app/AddEvidence"
+import { CaseDetails } from "./app/CaseDetails"
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ export function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="AddCase" component={AddCase} />
         <Stack.Screen name="AddEvidence" component={AddEvidence} />
+        <Stack.Screen name="CaseDetails" component={CaseDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

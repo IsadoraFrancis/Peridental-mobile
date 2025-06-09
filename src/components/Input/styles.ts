@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     borderWidth: 1,
     borderColor: themes.colors.bgText,
-    borderRadius: 15,
+    borderRadius: 8,
+    height: 60
   },
   input: {
     flex: 1,

@@ -6,9 +6,9 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: "#296D9D",
     alignItems: "center",
-    width: 330,
+    width: 345,
     justifyContent: "flex-start",
-    height: 300,
+    height: 320,
     position: "relative",
   },
   titleContainer: {
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
   },
   viewButton: {
     backgroundColor: "#B30E2F",
-    borderRadius: 20,
+    borderRadius: 8,
     paddingVertical: 8,
     paddingHorizontal: 15,
     flexDirection: "row",

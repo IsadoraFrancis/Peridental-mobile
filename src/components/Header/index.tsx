@@ -15,7 +15,7 @@ export function Header() {
           <Text style={styles.name}>Peridental</Text>
         </View>
         <TouchableOpacity onPress={() => setMenuVisible(true)}>
-          <Ionicons name="menu" size={24} color="#fff" />
+          <Ionicons name="menu" size={37} color="#fff" marginTop={30} />
         </TouchableOpacity>
       </View>
       {/* Modal de Menu */}

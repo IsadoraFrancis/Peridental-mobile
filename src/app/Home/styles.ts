@@ -3,13 +3,35 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
     backgroundColor: "#fff",
   },
+  scrollViewContent: { 
+    flexGrow: 1,
+    alignItems: "center",
+    paddingBottom: 20, 
+  },
+
+  casesHeader: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between', 
+    width: '90%', 
+    marginTop: 20,
+    marginBottom: 10,
+    paddingHorizontal: 0, 
+  },
+  overviewText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#00223A",
+    flex: 1, 
+    textAlign: 'center',
+    marginLeft: 35
+  },
+
   text: {
-    fontSize: 32,
-    fontWeight: 400,
+    fontSize: 40,
+     fontWeight: "bold",
     color: "white",
   },
   summaryPanel: {
@@ -46,30 +68,24 @@ export const styles = StyleSheet.create({
   },
   detailsButton: {
     backgroundColor: "#B30E2F",
-    borderRadius: 20,
+    borderRadius: 8,
     paddingVertical: 8,
     paddingHorizontal: 15,
-    marginTop: 15,
+    marginTop: 20,
     width: "80%",
     alignItems: "center",
   },
   detailsButtonText: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 16,
-  },
-  overviewText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#296D9D",
-    marginTop: 20,
-    marginBottom: 10,
+    fontSize: 13,
   },
   bottomButtonsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
     width: "90%",
     marginTop: 20,
+    marginBottom: 30
   },
   bottomButton: {
     backgroundColor: "#00223A",
@@ -83,7 +99,7 @@ export const styles = StyleSheet.create({
   bottomButtonText: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: 13,
     textAlign: "center",
   },
 });
