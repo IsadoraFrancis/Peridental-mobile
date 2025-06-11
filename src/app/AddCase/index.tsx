@@ -2,14 +2,15 @@ import { View, Text, TouchableOpacity, FlatList, TextInput, Image, ScrollView, A
 import { styles } from "./styles";
 import { Header } from "@/components/Header";
 import { AntDesign, Feather } from "@expo/vector-icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react"; // Importar useCallback
 import * as ImagePicker from "expo-image-picker";
 import * as DocumentPicker from 'expo-document-picker';
 import * as Location from "expo-location";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { useFocusEffect } from '@react-navigation/native'; // Importar useFocusEffect
 
 interface Evidence {
-    id: string; 
+    id: string;
     type: string;
     imageUri: string | null;
     imageName: string | null;
@@ -36,7 +37,7 @@ export function AddCase() {
     const [selected2, setSelected2] = useState("Data");
     const [selected3, setSelected3] = useState("Status");
     const [selectedEvidence, setSelectedEvidence] = useState("Selecionar");
-    const [selectedReportType, setSelectedReportType] = useState("Tipo do Laudo"); 
+    const [selectedReportType, setSelectedReportType] = useState("Tipo do Laudo");
 
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -45,14 +46,14 @@ export function AddCase() {
     const [location, setLocation] = useState('');
     const [evidenceDescription, setEvidenceDescription] = useState('');
 
-    const [evidences, setEvidences] = useState<Evidence[]>([]);                 
+    const [evidences, setEvidences] = useState<Evidence[]>([]);
     const [editingEvidenceId, setEditingEvidenceId] = useState<string | null>(null);
 
     const [reportFile, setReportFile] = useState<string | null>(null);
-    const [reportFileName, setReportFileName] = useState<string | null>(null); 
-    const [reportDescription, setReportDescription] = useState(''); 
-    const [reports, setReports] = useState<Report[]>([]); 
-    const [editingReportId, setEditingReportId] = useState<string | null>(null); 
+    const [reportFileName, setReportFileName] = useState<string | null>(null);
+    const [reportDescription, setReportDescription] = useState('');
+    const [reports, setReports] = useState<Report[]>([]);
+    const [editingReportId, setEditingReportId] = useState<string | null>(null);
 
 
     const options1 = [
@@ -72,7 +73,7 @@ export function AddCase() {
         { label: "Imagem" },
     ];
 
-    const reportTypeOptions = [ 
+    const reportTypeOptions = [
         { label: "Laudo pericial" },
         { label: "Relatorio tecnico" },
         { label: "Parecer odontologico" },
@@ -122,19 +123,33 @@ export function AddCase() {
         }
     };
 
-    const getLocation = async () => {
+    // Tornar getLocation um useCallback para evitar recriação desnecessária
+    const getLocation = useCallback(async () => {
+        Alert.alert("Obtendo localização", "Aguarde enquanto tentamos obter sua localização...");
         const { status } = await Location.requestForegroundPermissionsAsync();
+
         if (status !== 'granted') {
+            Alert.alert("Permissão negada", "Não foi possível obter a localização. Por favor, conceda a permissão nas configurações do seu dispositivo.");
             setLocation('Permissão negada');
             return;
         }
-        const loc = await Location.getCurrentPositionAsync({});
-        setLocation(`Lat: ${loc.coords.latitude.toFixed(5)}, Lon: ${loc.coords.longitude.toFixed(5)}`);
-    };
 
-    useEffect(() => {
-        getLocation();
-    }, []);
+        try {
+            const loc = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High });
+            setLocation(`Lat: ${loc.coords.latitude.toFixed(5)}, Lon: ${loc.coords.longitude.toFixed(5)}`);
+        } catch (error) {
+            console.error("Erro ao obter a localização:", error);
+            Alert.alert("Erro de Localização", "Não foi possível obter a localização exata. Verifique seu GPS e conexão com a internet.");
+            setLocation('Erro ao obter localização');
+        }
+    }, []); // Sem dependências para useCallback, pois só depende de funções de API
+
+    // Usar useFocusEffect para chamar getLocation sempre que a tela estiver focada
+    useFocusEffect(
+        useCallback(() => {
+            getLocation();
+        }, [getLocation])
+    );
 
     const clearEvidenceForm = () => {
         setSelectedEvidence("Selecionar");
@@ -142,7 +157,7 @@ export function AddCase() {
         setLocation('');
         setEvidenceDescription('');
         setEditingEvidenceId(null);
-        getLocation(); 
+        getLocation(); // Chamar getLocation ao limpar o formulário para re-tentar
     };
 
     const clearReportForm = () => {
@@ -160,7 +175,7 @@ export function AddCase() {
         }
 
         const newEvidence: Evidence = {
-            id: editingEvidenceId || Date.now().toString(), 
+            id: editingEvidenceId || Date.now().toString(),
             type: selectedEvidence,
             imageUri: image,
             imageName: (image?.split('/').pop() || null),
@@ -205,7 +220,7 @@ export function AddCase() {
         setImage(evidence.imageUri);
         setLocation(evidence.location);
         setEvidenceDescription(evidence.description);
-      
+
     };
 
     const handleDeleteEvidence = (id: string) => {
@@ -482,60 +497,6 @@ export function AddCase() {
                         </View>
                     )}
                 </View>
-
-                {/* Upload de Laudo */}
-                <View style={styles.evidenceSection}>
-                    <Text style={styles.evidenceTitle}>Upload de Laudo:</Text>
-                    <TouchableOpacity style={styles.evidenceUploadButton} onPress={pickDocument}>
-                        <Text style={styles.evidenceUploadText}>Selecionar Arquivo</Text>
-                    </TouchableOpacity>
-                    {reportFile && (
-                        <View style={styles.evidenceImageContainer}>
-                            <Text style={styles.evidenceImageName}>{reportFileName || 'Nenhum arquivo selecionado'}</Text>
-                        </View>
-                    )}
-                </View>
-
-                {/* Descrição de Laudos/Documentos */}
-                <View style={styles.evidenceSection}>
-                    <Text style={styles.evidenceTitle}>Descrição de Laudos/Documentos</Text>
-                    <TextInput
-                        style={styles.evidenceDescriptionInput}
-                        multiline
-                        value={reportDescription}
-                        onChangeText={setReportDescription}
-                    />
-                </View>
-
-                <TouchableOpacity style={styles.saveEvidenceButton} onPress={handleAddOrUpdateReport}>
-                    <Text style={styles.saveButtonText}>{editingReportId ? "Atualizar Laudo" : "Adicionar Laudo/Documento"}</Text>
-                </TouchableOpacity>
-
-                {/* Lista de Laudos/Documentos Adicionados */}
-                <Text style={styles.evidenceListTitle}>Laudos e Documentos Adicionados:</Text>
-                {reports.map((item) => (
-                    <View key={item.id} style={styles.evidenceCard}>
-                        <View style={styles.evidenceCardHeader}>
-                            <Text style={styles.evidenceCardTypeText}>Tipo: {item.type}</Text>
-                            <Text style={styles.evidenceCardImageNameText}>Arquivo: {item.fileName || 'Nenhum'}</Text>
-                            <View style={styles.evidenceCardActions}>
-                                <TouchableOpacity onPress={() => handleEditReport(item)}>
-                                    <Feather name="edit" size={20} color="#00223A" style={{ marginRight: 10 }} />
-                                </TouchableOpacity>
-                                <TouchableOpacity onPress={() => handleDeleteReport(item.id)}>
-                                    <AntDesign name="delete" size={20} color="#AB0535" />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                        <Text style={styles.evidenceCardDescriptionText}>Descrição: {item.description}</Text>
-                    </View>
-                ))}
-
-
-                {/* Main Save Button for the Case */}
-                <TouchableOpacity style={styles.mainSaveButton} onPress={() => console.log("Salvar Caso Completo")}>
-                    <Text style={styles.saveButtonText}>Salvar Caso</Text>
-                </TouchableOpacity>
             </View>
         </ScrollView>
     );
