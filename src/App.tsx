@@ -8,8 +8,7 @@ import { AddEvidence } from "./app/AddEvidence";
 import { Access } from "./app/Access";
 import { Profile } from "./app/Access/Profile";
 import { CaseDetails } from "./app/CaseDetails";
-import { Paciente } from "./app/Paciente";
-import { AddPaciente } from "./app/AddPaciente";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,19 +26,19 @@ export type RootStackParamList = {
 
 export function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Hello" component={Hello} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="AddCase" component={AddCase} />
-        <Stack.Screen name="AddEvidence" component={AddEvidence} />
-        <Stack.Screen name="Access" component={Access} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="CaseDetails" component={CaseDetails} />
-        <Stack.Screen name="Paciente" component={Paciente} />
-        <Stack.Screen name="AddPaciente" component={AddPaciente} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Hello" component={Hello} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="AddCase" component={AddCase} />
+          <Stack.Screen name="AddEvidence" component={AddEvidence} />
+          <Stack.Screen name="Access" component={Access} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="CaseDetails" component={CaseDetails} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthProvider>
   );
 }
