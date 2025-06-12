@@ -5,41 +5,48 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  scrollViewContent: { 
+  scrollViewContent: {
     flexGrow: 1,
     alignItems: "center",
-    paddingBottom: 20, 
+    paddingBottom: 20,
   },
-
-  casesHeader: { 
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    justifyContent: 'space-between', 
-    width: '90%', 
+  casesHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "90%",
     marginTop: 20,
     marginBottom: 10,
-    paddingHorizontal: 0, 
+    paddingHorizontal: 0,
   },
   overviewText: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#00223A",
-    flex: 1, 
-    textAlign: 'center',
-
+    flex: 1,
+    textAlign: "center",
   },
-
   text: {
     fontSize: 40,
-     fontWeight: "bold",
+    fontWeight: "bold",
     color: "white",
+  },
+  error: {
+    color: "#B30E2F",
+    fontSize: 14,
+    marginBottom: 15,
+    textAlign: "center",
+    backgroundColor: "rgba(179, 14, 47, 0.1)",
+    padding: 10,
+    borderRadius: 8,
+    width: "90%",
   },
   bottomButtonsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
     width: "90%",
     marginTop: 20,
-    marginBottom: 30
+    marginBottom: 30,
   },
   bottomButton: {
     backgroundColor: "#00223A",
@@ -49,6 +56,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "45%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
   },
   bottomButtonText: {
     color: "#fff",

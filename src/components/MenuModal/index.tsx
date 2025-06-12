@@ -14,7 +14,8 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 type RootStackParamList = {
   Home: undefined;
   Access: undefined;
-  Paciente: undefined;
+  Patient: undefined;
+  Dashboard: undefined;
 };
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -70,7 +71,7 @@ export function MenuModal({ isVisible, onClose }: MenuModalProps) {
             <TouchableOpacity
               style={styles.menuItem}
               onPress={() => {
-                navigation.navigate("Paciente");
+                navigation.navigate("Patient");
                 onClose();
               }}
             >
@@ -83,9 +84,13 @@ export function MenuModal({ isVisible, onClose }: MenuModalProps) {
               <Text style={styles.menuItemText}>Laudos</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => console.log("Cruzamento de dados")}
+              style={styles.menuItem}
+              onPress={() => {
+                navigation.navigate("Dashboard");
+                onClose();
+              }}
             >
-              <Text style={styles.menuItemText}>Cruzamento de dados</Text>
+              <Text style={styles.menuItemText}>Dashboard</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.menuItem}

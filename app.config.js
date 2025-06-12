@@ -26,7 +26,7 @@ export default () => ({
       favicon: "./assets/favicon.png",
     },
     extra: {
-      API_URL: "http://192.168.1.104:5000",
+      API_URL: "http://192.168.1.210:5000",
     },
   },
 });

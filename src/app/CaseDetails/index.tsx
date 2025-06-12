@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -46,6 +46,7 @@ interface CaseData {
 export function CaseDetails({ navigation }: any) {
   const route = useRoute();
   const { caseData } = route.params as { caseData: CaseData };
+  const [searchTerm, setSearchTerm] = useState("");
 
   if (!caseData) {
     return (
@@ -95,6 +96,11 @@ export function CaseDetails({ navigation }: any) {
     };
     return typeMap[type] || type;
   };
+
+  // Função para filtrar pacientes por nome
+  const filteredPatients = caseData.patients.filter((patient) =>
+    patient.nome.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -161,15 +167,32 @@ export function CaseDetails({ navigation }: any) {
 
         <View style={styles.generalEvidenceSection}>
           <Text style={styles.sectionTitle}>Vítimas do Caso</Text>
-          <Input />
-          {caseData.patients.map((patient) => (
-            <View key={patient._id} style={styles.cardContainer}>
-              <Text style={styles.patientName}>{patient.nome}</Text>
-              <Text style={styles.patientNic}>NIC: {patient.nic}</Text>
-            </View>
-          ))}
+          <Input
+            placeholder="Buscar vítima por nome..."
+            value={searchTerm}
+            onChangeText={setSearchTerm}
+          />
+          {filteredPatients.length > 0 ? (
+            filteredPatients.map((patient) => (
+              <View key={patient._id} style={styles.cardContainer}>
+                <Text style={styles.patientName}>{patient.nome}</Text>
+                <Text style={styles.patientNic}>NIC: {patient.nic}</Text>
+              </View>
+            ))
+          ) : (
+            <Text style={styles.noResultsText}>
+              {searchTerm
+                ? "Nenhuma vítima encontrada com este nome"
+                : "Nenhuma vítima registrada"}
+            </Text>
+          )}
           <View style={styles.bottomButtonsContainer}>
-            <TouchableOpacity style={styles.bottomButton}>
+            <TouchableOpacity
+              style={styles.bottomButton}
+              onPress={() =>
+                navigation.navigate("AddPatient", { caseId: caseData._id })
+              }
+            >
               <Text style={styles.bottomButtonText}>ADICIONAR VÍTIMA</Text>
             </TouchableOpacity>
           </View>

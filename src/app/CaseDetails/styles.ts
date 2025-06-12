@@ -87,6 +87,12 @@ export const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 20,
   },
+  noResultsText: {
+    textAlign: "center",
+    color: "#666",
+    marginVertical: 10,
+    fontStyle: "italic",
+  },
   // Estilos para os cards de pacientes
   cardContainer: {
     backgroundColor: "#FFFFFF",

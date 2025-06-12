@@ -24,13 +24,17 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.2",
+    "react-native-chart-kit": "^6.12.0",
     "react-native-picker-select": "^9.3.1",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.10.0",
+    "react-native-svg": "^15.12.0",
+    "react-native-toast-message": "^2.3.0",
     "react-native-web": "^0.20.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@types/lodash": "^4.17.17",
     "@types/react": "~19.0.10",
     "typescript": "~5.8.3"
   },

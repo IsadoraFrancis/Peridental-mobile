@@ -10,6 +10,11 @@ import { Profile } from "./app/Access/Profile";
 import { RegisterUser } from "./app/Access/RegisterUser";
 import { CaseDetails } from "./app/CaseDetails";
 import { AuthProvider } from "./contexts/AuthContext";
+import { AddPatient } from "./app/AddPatient";
+import { Patient } from "./app/Patient";
+import { Patient as PatientType } from "@/types/patient"; // Adicionar esta importação
+import { AllPatients } from "./app/Patient/AllPatients";
+import { Dashboard } from "./app/Dashboard";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +37,13 @@ export type RootStackParamList = {
     };
   };
   CaseDetails: undefined;
+  Patient: undefined;
+  AddPatient: {
+    caseId?: string;
+  };
+  AllPatients: undefined;
+  Dashboard: undefined;
+  PatientDetails: { patient: PatientType };
 };
 
 export function App() {
@@ -47,7 +59,11 @@ export function App() {
           <Stack.Screen name="Access" component={Access} />
           <Stack.Screen name="RegisterUser" component={RegisterUser} />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="CaseDetails" component={CaseDetails} />
+          <Stack.Screen name="Patient" component={Patient} />
+          <Stack.Screen name="AddPatient" component={AddPatient} />
+          <Stack.Screen name="AllPatients" component={AllPatients} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>
