@@ -11,7 +11,9 @@ interface UserCardProps {
     id: string;
     name: string;
     role: string;
-    avatar: string; // Pode ser uma URL ou um caminho local
+    email: string;
+    isActive: boolean;
+    avatar?: string;
   };
 }
 
@@ -23,6 +25,19 @@ type UserCardNavigationProp = NativeStackNavigationProp<
 export function UserCard({ user }: UserCardProps) {
   const navigation = useNavigation<UserCardNavigationProp>();
 
+  const handleViewProfile = () => {
+    navigation.navigate("Profile", {
+      user: {
+        id: user.id,
+        name: user.name,
+        role: user.role,
+        email: user.email,
+        isActive: user.isActive,
+        avatar: user.avatar || "",
+      },
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -30,17 +45,23 @@ export function UserCard({ user }: UserCardProps) {
           user.avatar
             ? { uri: user.avatar }
             : require("@/assets/user-placeholder.jpg")
-        } // Placeholder se não houver avatar
+        }
         style={styles.avatar}
       />
       <View style={styles.userInfo}>
         <Text style={styles.userName}>{user.name}</Text>
         <Text style={styles.userRole}>{user.role}</Text>
+        <Text style={styles.userEmail}>{user.email}</Text>
+        <Text
+          style={[
+            styles.userStatus,
+            { color: user.isActive ? "#4CAF50" : "#F44336" },
+          ]}
+        >
+          {user.isActive ? "Ativo" : "Inativo"}
+        </Text>
       </View>
-      <TouchableOpacity
-        style={styles.viewButton}
-        onPress={() => navigation.navigate("Profile", { user: user })}
-      >
+      <TouchableOpacity style={styles.viewButton} onPress={handleViewProfile}>
         <Text style={styles.viewButtonText}>Visualizar</Text>
         <Ionicons name="eye-outline" size={16} color="#fff" />
       </TouchableOpacity>

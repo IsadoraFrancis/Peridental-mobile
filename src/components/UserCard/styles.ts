@@ -29,10 +29,21 @@ export const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+    marginBottom: 4,
   },
   userRole: {
     color: "#ccc",
     fontSize: 14,
+    marginBottom: 4,
+  },
+  userEmail: {
+    color: "#ccc",
+    fontSize: 14,
+    marginBottom: 4,
+  },
+  userStatus: {
+    fontSize: 14,
+    fontWeight: "500",
   },
   viewButton: {
     backgroundColor: "#B30E2F",

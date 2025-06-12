@@ -7,6 +7,7 @@ import { AddCase } from "./app/AddCase";
 import { AddEvidence } from "./app/AddEvidence";
 import { Access } from "./app/Access";
 import { Profile } from "./app/Access/Profile";
+import { RegisterUser } from "./app/Access/RegisterUser";
 import { CaseDetails } from "./app/CaseDetails";
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -19,7 +20,18 @@ export type RootStackParamList = {
   AddCase: undefined;
   AddEvidence: undefined;
   Access: undefined;
-  Profile: { user: { id: string; name: string; role: string; avatar: string } };
+  RegisterUser: undefined;
+  Profile: {
+    user: {
+      id: string;
+      name: string;
+      role: string;
+      email: string;
+      isActive: boolean;
+      avatar?: string;
+    };
+  };
+  CaseDetails: undefined;
 };
 
 export function App() {
@@ -33,6 +45,7 @@ export function App() {
           <Stack.Screen name="AddCase" component={AddCase} />
           <Stack.Screen name="AddEvidence" component={AddEvidence} />
           <Stack.Screen name="Access" component={Access} />
+          <Stack.Screen name="RegisterUser" component={RegisterUser} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="CaseDetails" component={CaseDetails} />
         </Stack.Navigator>
