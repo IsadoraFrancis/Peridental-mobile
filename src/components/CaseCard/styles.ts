@@ -62,4 +62,9 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     width: "100%",
   },
+  errorText: {
+    color: "red",
+    textAlign: "center",
+    marginTop: 20,
+  },
 });
