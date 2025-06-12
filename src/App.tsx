@@ -8,6 +8,8 @@ import { AddEvidence } from "./app/AddEvidence";
 import { Access } from "./app/Access";
 import { Profile } from "./app/Access/Profile";
 import { CaseDetails } from "./app/CaseDetails";
+import { Paciente } from "./app/Paciente";
+import { AddPaciente } from "./app/AddPaciente";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +20,8 @@ export type RootStackParamList = {
   AddCase: undefined;
   AddEvidence: undefined;
   Access: undefined;
+  Paciente: undefined;
+  AddPaciente: undefined;
   Profile: { user: { id: string; name: string; role: string; avatar: string } };
 };
 
@@ -33,6 +37,8 @@ export function App() {
         <Stack.Screen name="Access" component={Access} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="CaseDetails" component={CaseDetails} />
+        <Stack.Screen name="Paciente" component={Paciente} />
+        <Stack.Screen name="AddPaciente" component={AddPaciente} />
       </Stack.Navigator>
     </NavigationContainer>
   );
